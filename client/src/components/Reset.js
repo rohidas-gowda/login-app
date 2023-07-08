@@ -24,7 +24,7 @@ function Reset() {
       <Toaster position='top-center'></Toaster>
       
       <div className='flex justify-center items-center h-screen'>
-        <div className={styles.glass}>
+        <div className={styles.glass} style={{width: "50%"}}>
 
           <div className='title flex flex-col items-center'>
             <h4 className='text-5xl font-bold'>Reset</h4>
@@ -37,7 +37,7 @@ function Reset() {
             <div className='textbox flex flex-col items-center gap-6'>
               <input {...formik.getFieldProps('password')} className={styles.textbox} type='text' placeholder='Password' />
               <input {...formik.getFieldProps('confirm_pwd')} className={styles.textbox} type='text' placeholder='Repeat Password' />
-              <button className={styles.btn} type='submit'>Sign In</button>
+              <button className={styles.btn} type='submit'>Reset</button>
             </div>
           </form>
 
