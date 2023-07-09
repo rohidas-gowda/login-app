@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import avatar from '../assets/profile.png'
 import styles from '../styles/Username.module.css'
 import { Toaster } from 'react-hot-toast'
 import { useFormik } from 'formik'
 import { passwordValidate } from '../helper/validate'
+import convertToBase64 from '../helper/convert'
 
 function Register() {
+  const [file, setFile] = useState();
 
   const formik = useFormik({
     initialValues : {
@@ -21,13 +23,19 @@ function Register() {
       console.log(values);
     }
   })
+
+  const onUpload = async e => {
+    const base64 = convertToBase64();
+    setFile(base64);
+  }
+
   return (
     <div className='container mx-auto'>
 
-      <Toaster position='top-center'></Toaster>
+      <Toaster position='top-center' reverseOrder={false}></Toaster>
       
       <div className='flex justify-center items-center h-screen'>
-        <div className={styles.glass}>
+        <div className={styles.glass} style={{width: "45%"}}>
 
           <div className='title flex flex-col items-center'>
             <h4 className='text-5xl font-bold'>Register</h4>
@@ -52,7 +60,7 @@ function Register() {
             </div>
 
             <div className='text-center py-4'>
-              <span className='text-gray-500'>Forgot Password? <Link className='text-red-500' to='/recovery'>Recover Now</Link></span>
+              <span className='text-gray-500'>Already Register? <Link className='text-red-500' to='/'>Login Now</Link></span>
             </div>
           </form>
 
